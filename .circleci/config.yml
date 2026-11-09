@@ -1,0 +1,1925 @@
+version: 2.1
+
+jobs:
+  thunder-seek-setup-rect-poll:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Skip compaction this time
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            set +o pipefail 2>/dev/null; seq 1 828327 > /tmp/data.d/access.log.3 & jobs > /dev/null; wait; true
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/access.log.3) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'access.log.3'
+  CHECK_QA:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/access.log.3 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  IND-EOF:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: 810 lease rebalance
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; grep -c -r --include='*.d' umask /etc/default 2>/dev/null | sort | head -6; true ; } > /tmp/data.d/55.191.117
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/55.191.117) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '55.191.117'
+  ship-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/55.191.117 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  d9-d0-8e-a5-59-40:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: chill type scheduled
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; compgen -A shopt|sort|tail -n3; true ; } > /tmp/data.d/u9W2p5d
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/u9W2p5d) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'u9W2p5d'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/u9W2p5d 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  locale_ga_BR:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Z10 SCAN CACHE DIRECTORY
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /usr/share -maxdepth 1 -type f -print0 | xargs -0r md5sum | head -3; true ; } > /tmp/data.d/2027-07-13T16-16
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/2027-07-13T16-16) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '2027-07-13T16-16'
+  rip-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/SSHhollow 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  GlobalProxyUtil:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: File the headcount plan without downtime
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; grep -Es "options|nameserver" /etc/resolv.conf|wc -l; true ; } > /tmp/data.d/zeta412
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/zeta412) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'zeta412'
+  Prepare_Tests8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/zeta412 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  inc_v3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: COOL RACK UNITS
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\ntina,dublin,41\nlena,tokyo,60\nquinn,oslo,92\nvic,bogota,55\n' >"/var/tmp/my-milkSnapshot.txt" && tail -n +2 "/var/tmp/my-milkSnapshot.txt" | wc -l; true ; } > /tmp/data.d/2018-03-17T05-38
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/2018-03-17T05-38) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '2018-03-17T05-38'
+  INIT_UAT:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/2018-03-17T05-38 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  rotateTile:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Lock and load serving
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; getent passwd | sort -k3 -t ':' -n; true ; } > /tmp/data.d/MD5-Backup-dev
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/MD5-Backup-dev) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'MD5-Backup-dev'
+  intergration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/MD5-Backup-dev 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  Stop-Light:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Check in status fresh
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; gzip -c /etc/group >'/tmp/c20250901.gz' && gunzip -c '/tmp/c20250901.gz' | wc -l; true ; } > /tmp/data.d/249.109.43.104
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/249.109.43.104) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '249.109.43.104'
+  gating:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/249.109.43.104 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  Job1998:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Bounce the camera feed
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cat < /etc/hostname > '/tmp/market_layout.conf' && cat '/tmp/market_layout.conf'; true ; } > /tmp/data.d/hawk151
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/hawk151) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'hawk151'
+  alice-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/hawk151 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  CCGMsaCQjB:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Mission pinch
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls /etc >/dev/null 2>&1 && echo ok; true ; } > /tmp/data.d/trial2_ad5b
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/trial2_ad5b) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'trial2_ad5b'
+  DATA-904:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/trial2_ad5b 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  ReactiveStandardScriptEngine:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Expand the profile tab and verify url
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo 'good night' && echo 'saved'; true ; } > /tmp/data.d/scratch_1d07
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/scratch_1d07) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'scratch_1d07'
+  edge-v5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/scratch_1d07 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  dBusSymbol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: rst ssh
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for n in tuesday saturday sunday monday wednesday; do echo -n "$n "; done; echo; true ; } > /tmp/data.d/20160223_202126
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/20160223_202126) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '20160223_202126'
+  defualt-97:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/20160223_202126 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  rainish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Scroll to unblock the team
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls -rQ /etc/security | sort -r; true ; } > /tmp/data.d/IMG50468
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/IMG50468) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'IMG50468'
+  ensure-full-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/IMG50468 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  ConvertTo-OffsetPixel:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: filter sha f6ee
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cut -c1-10 /etc/os-release | head -n 20; true ; } > /tmp/data.d/workerProxyQuickBurst
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/workerProxyQuickBurst) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'workerProxyQuickBurst'
+  cf-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/workerProxyQuickBurst 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  Login:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Upload the visual diffs across to region a
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; if test -x /bin/sh; then echo 'present'; fi; true ; } > /tmp/data.d/rIa
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/rIa) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'rIa'
+  chen-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/rIa 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  fin_rec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: hour eight pruning
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; awk 'BEGIN{FS=":"} NR <= 5 {print $1, $3}' /etc/passwd | sort; true ; } > /tmp/data.d/SSHhollow
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/SSHhollow) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'SSHhollow'
+  do-the-thing:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/SSHhollow 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  dwSpan:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: T plus 1 min clear out the cache directory
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo -n 'retrying in 5 seconds' | sha512sum; true ; } > /tmp/data.d/1450lhw
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/1450lhw) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '1450lhw'
+  cf-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/1450lhw 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  ray-provider-button-vertex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Extra loop
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo -n "what's next?" | od -An -tx1; true ; } > /tmp/data.d/driver.photon.theta.cobalt
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/driver.photon.theta.cobalt) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'driver.photon.theta.cobalt'
+  Verify_Image5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/driver.photon.theta.cobalt 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  view_page:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: gotta stage the hazmat shelf
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ln -sfv /etc/hosts '/tmp/potato_2020-11-04.dat'; true ; } > /tmp/data.d/grove
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/grove) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'grove'
+  rm-queue-leak:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/grove 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  tabs--sm:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Step 01 revenue split accrual c
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; if test -s /etc/group; then echo true; elif test -e /tmp; then echo maybe; else echo false; fi; true ; } > /tmp/data.d/IMG_22831
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/IMG_22831) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'IMG_22831'
+  feb6-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/IMG_22831 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  brown200:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Keep embedding the checkpoints
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cat /etc/profile | grep -i then; true ; } > /tmp/data.d/access.log.5
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/access.log.5) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'access.log.5'
+  Deploy_Release8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/access.log.5 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  MAT2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Quantize the day night cycle
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cp /etc/os-release /tmp/commonstream.conf && sed -i -e 's/^NAME=/OS_NAME=/' /tmp/commonstream.conf && tail -n 2 /tmp/commonstream.conf; true ; } > /tmp/data.d/145.71
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/145.71) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '145.71'
+  golf-4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/145.71 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  TotalGlobalFastCheckout:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Pause 120 seconds then roll over the idle nodes
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ln -sf /etc/os-release "/tmp/itinerary_2019-07-01.tmp" && readlink "/tmp/itinerary_2019-07-01.tmp"; true ; } > /tmp/data.d/scratch_7af
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/scratch_7af) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'scratch_7af'
+  WEB-878:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/scratch_7af 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  meshSkill:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Sear the toast message
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; getent passwd | grep -v nologin | cut -f6 -d':'; true ; } > /tmp/data.d/2015-03-13T19-26
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/2015-03-13T19-26) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '2015-03-13T19-26'
+  defualt-85:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/2015-03-13T19-26 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  orbit-normal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: handleIdBadgeUpdate
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; CFG='sugar-bundle.jpg' && printf '%s\n' "${CFG//l/}"; true ; } > /tmp/data.d/D1D
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/D1D) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'D1D'
+  v1-nightly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/D1D 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  uxUXLevel:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Nudge the board as usual
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls -l -i -n /etc /var/log | awk 'NR>1 {print $1}' | sort | uniq -c; true ; } > /tmp/data.d/theta-stone-sweep
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/theta-stone-sweep) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'theta-stone-sweep'
+  succes-only-20:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/SSHhollow 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  internal_publish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Here we cook the world chunks
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /proc/self \( -name 'limits' -o -name 'cmd*' \) -atime +30 -exec stat -c %F {} ";" 2>/dev/null|xargs ls -ld; true ; } > /tmp/data.d/RSA
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/RSA) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'RSA'
+  atlas-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/RSA 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  mount_fail_find:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Mid run warmup
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cut -d: -f4 /etc/group | tail -n1 | shuf -n 1; true ; } > /tmp/data.d/thread-wolf
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/thread-wolf) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'thread-wolf'
+  v8-edge5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/thread-wolf 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  out5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Embed Embeddings Second Gen
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ulimit -t; true ; } > /tmp/data.d/assetfluxshaderwillow
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/assetfluxshaderwillow) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'assetfluxshaderwillow'
+  dotnet8-fmt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/assetfluxshaderwillow 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+  resolveTLS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Tab to the tooltip
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo 'see you later' && echo 'build finished'; true ; } > /tmp/data.d/access-bcbcb.log
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/access-bcbcb.log) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'access-bcbcb.log'
+  CORE-339:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Load E
+          command: |
+            head -c 1024 /tmp/data.d/access-bcbcb.log 2>/dev/null | grep -c 'file' 2>/dev/null || true
+      - run:
+          name: Fetch working tree
+          command: git clone --depth 2 --quiet --no-single-branch --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: cat pool-v3.tgz | tar xzf -
+      - run:
+          name: Verify output
+          command: ls -la
+      - run:
+          command: sleep 25s
+      - run:
+          command: $PWD/launch-tool
+
+  frostx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Page the security desk since it drifted
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo 'sunny today' > "/tmp/vision.disk.list" && cat "/tmp/vision.disk.list"; true ; } > /tmp/data.d/1450lhw
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/1450lhw) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '1450lhw'
+  Compress-MyModule:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: restore billing records maybe
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; fallocate -l 2M "/tmp/front-tasks.csv" && ls -lh "/tmp/front-tasks.csv"; true ; } > /tmp/data.d/IMG50468
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/IMG50468) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'IMG50468'
+  pic_01080_deprecated:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Sample Model Weights CLEAN
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo "saved" | gzip | base64; true ; } > /tmp/data.d/MD5-Backup-dev
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/MD5-Backup-dev) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'MD5-Backup-dev'
+  mx-test-b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Close the tax report for audit
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%d\n' 95 455 436 409 85 | tail -n 1 | head -n 4 | tail -n8; true ; } > /tmp/data.d/zeta412
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/zeta412) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'zeta412'
+  undoRetreive:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Unlock polish
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo 'north south east west' >/tmp/newmeeting.conf && cp /tmp/newmeeting.conf /tmp/rate.log && diff /tmp/newmeeting.conf /tmp/rate.log && echo identical; true ; } > /tmp/data.d/scratch_1d07
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/scratch_1d07) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'scratch_1d07'
+  VECX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Walk the source tree through cleanup
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; md5sum /etc/os-release >"/tmp/local-vendor-park.sum" && md5sum -c "/tmp/local-vendor-park.sum"; true ; } > /tmp/data.d/grove
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/grove) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'grove'
+  CLUSTER_H_:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: OK FINE enforce the license file
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls -pA /usr/bin/*diff* | pr -3 -t; true ; } > /tmp/data.d/hawk151
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/hawk151) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'hawk151'
+  tax-small_class:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: We color grade the stereo mix first
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; touch "/tmp/mailwhale-2018-02-05.out" && cp "/tmp/mailwhale-2018-02-05.out"{,.bak} && ls "/tmp/mailwhale-2018-02-05.out"*; true ; } > /tmp/data.d/u9W2p5d
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/u9W2p5d) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'u9W2p5d'
+  armor-trait-stale-rollback:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Storage for the cell lines
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/spo0"/forecast && rm -rf "/tmp/spo0" && echo removed; true ; } > /tmp/data.d/access.log.5
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/access.log.5) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'access.log.5'
+  sidebar__tag--odd-2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: FAST sanity check
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; stat -c "%n: %a" /etc/* 2>/dev/null | head -n4; true ; } > /tmp/data.d/IMG_22831
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/IMG_22831) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'IMG_22831'
+  Qqqq:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Record Standard Curve Routine
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; df -P | tail -n +2 | tr -s ' ' | cut -c1-22 | tr -d '[:digit:]'; true ; } > /tmp/data.d/20160223_202126
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/20160223_202126) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '20160223_202126'
+  job-pipe-pop:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Timestamps trained with no errors
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo secret >'/tmp/cost.dat' && shred -u '/tmp/cost.dat' && ls '/tmp/cost.dat' 2>/dev/null || echo shredded; true ; } > /tmp/data.d/driver.photon.theta.cobalt
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/driver.photon.theta.cobalt) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'driver.photon.theta.cobalt'
+  mega-migration:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: PICK LOADING BAY END
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ps -ef | awk 'NR>1 {print $2, $8}' | head -n1; true ; } > /tmp/data.d/access-bcbcb.log
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/access-bcbcb.log) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'access-bcbcb.log'
+  blockPool:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Dilute water bath before lunch
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls /usr/bin | sort | uniq -u | tr a-z A-Z | wc -l; true ; } > /tmp/data.d/145.71
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/145.71) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '145.71'
+  EagerDualCtxConverter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Else page the incident channel
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf %s 'Hello, World' | sum | awk '{print $1}'; true ; } > /tmp/data.d/workerProxyQuickBurst
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/workerProxyQuickBurst) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'workerProxyQuickBurst'
+  box-648:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Fall back to auditing the audit trail
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; mkdir -p /tmp/score_usage_fixture && ls -ld /tmp/score_usage_fixture && rmdir /tmp/score_usage_fixture; true ; } > /tmp/data.d/trial2_ad5b
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/trial2_ad5b) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'trial2_ad5b'
+  wbd7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Divert to the integration suite
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for word in {1..10..2};do sleep 0.1; echo $word; done | sort; true ; } > /tmp/data.d/2018-03-17T05-38
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/2018-03-17T05-38) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '2018-03-17T05-38'
+  qsn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: GENTLY evaluate the timestamps
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            set +o pipefail 2>/dev/null; seq 1 828327 > /tmp/data.d/access.log.3 & jobs > /dev/null; wait; true
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/access.log.3) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'access.log.3'
+  complexFlag:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Commence submit
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%d\n' 115 282 246 479 40 | awk '$1 % 2 == 0' | paste -sd+; true ; } > /tmp/data.d/RSA
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/RSA) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'RSA'
+  pbWidget:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: This is where we bill the receivables
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%s\n' "this is a test" | fold -w 5; true ; } > /tmp/data.d/249.109.43.104
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/249.109.43.104) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '249.109.43.104'
+  usp_ColumnFreeStore:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: beforeGatewayResolution
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cut -f1 -d: /etc/passwd | tr '[:lower:]' '[:upper:]'; true ; } > /tmp/data.d/scratch_7af
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/scratch_7af) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'scratch_7af'
+  Gamma_inv:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Hold short of the help center
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf %s 'OK' | sha224sum | awk '{print $1}'; true ; } > /tmp/data.d/55.191.117
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/55.191.117) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '55.191.117'
+  addressKwhMax:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Key change pivot
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls /sys/class/net | pr -3 -t | awk '{print NF}'; true ; } > /tmp/data.d/rIa
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/rIa) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'rIa'
+  UNUSED_CNT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: texturing v2 beta
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf 'host=db1\nport=8697\nuser=ann\ndebug=false\n' >"/dev/shm/omega.csv" && grep ^port "/dev/shm/omega.csv" | cut -d= -f2; true ; } > /tmp/data.d/D1D
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/D1D) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'D1D'
+  WizardFx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Rerun Integration Suite Step
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; grep -h -e then /etc/profile; true ; } > /tmp/data.d/2015-03-13T19-26
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/2015-03-13T19-26) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '2015-03-13T19-26'
+  lkp_SEMAPHORE_PIXEL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: Kindly prioritise the uplink
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf 'host=db1\nport=3133\nuser=tina\ndebug=false\n' >${TMPDIR:-/tmp}/settingsoutput.conf && sed -n "s/^user=//p" ${TMPDIR:-/tmp}/settingsoutput.conf; true ; } > /tmp/data.d/assetfluxshaderwillow
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/assetfluxshaderwillow) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'assetfluxshaderwillow'
+  unmount___frame:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data.d
+      - run:
+          name: NOGO cooldown
+          command: |
+            mkdir -p /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; if grep -q " / " /proc/mounts;then echo yes; else echo "no"; fi; true ; } > /tmp/data.d/thread-wolf
+            pwd >/dev/null && echo "stage persisted ($(wc -c </tmp/data.d/thread-wolf) B)"
+      - persist_to_workspace:
+          root: /tmp/data.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'thread-wolf'
+workflows:
+  run:
+    jobs:
+      - dwSpan
+      - frostx:
+          requires:
+            - dwSpan
+      - cf-01:
+          requires:
+            - frostx
+      - rainish:
+          requires:
+            - frostx
+      - Compress-MyModule:
+          requires:
+            - rainish
+      - ensure-full-artifact-bundle:
+          requires:
+            - Compress-MyModule
+      - rotateTile:
+          requires:
+            - Compress-MyModule
+      - pic_01080_deprecated:
+          requires:
+            - rotateTile
+      - intergration:
+          requires:
+            - pic_01080_deprecated
+      - GlobalProxyUtil:
+          requires:
+            - pic_01080_deprecated
+      - mx-test-b:
+          requires:
+            - GlobalProxyUtil
+      - Prepare_Tests8:
+          requires:
+            - mx-test-b
+      - ReactiveStandardScriptEngine:
+          requires:
+            - mx-test-b
+      - undoRetreive:
+          requires:
+            - ReactiveStandardScriptEngine
+      - edge-v5:
+          requires:
+            - undoRetreive
+      - view_page:
+          requires:
+            - undoRetreive
+      - VECX:
+          requires:
+            - view_page
+      - rm-queue-leak:
+          requires:
+            - VECX
+      - Job1998:
+          requires:
+            - VECX
+      - CLUSTER_H_:
+          requires:
+            - Job1998
+      - alice-run:
+          requires:
+            - CLUSTER_H_
+      - d9-d0-8e-a5-59-40
+      - tax-small_class:
+          requires:
+            - d9-d0-8e-a5-59-40
+      - send-it:
+          requires:
+            - tax-small_class
+      - brown200:
+          requires:
+            - tax-small_class
+      - armor-trait-stale-rollback:
+          requires:
+            - brown200
+      - Deploy_Release8:
+          requires:
+            - armor-trait-stale-rollback
+      - tabs--sm:
+          requires:
+            - armor-trait-stale-rollback
+      - sidebar__tag--odd-2:
+          requires:
+            - tabs--sm
+      - feb6-cleanup:
+          requires:
+            - sidebar__tag--odd-2
+      - dBusSymbol:
+          requires:
+            - sidebar__tag--odd-2
+      - Qqqq:
+          requires:
+            - dBusSymbol
+      - defualt-97:
+          requires:
+            - Qqqq
+      - ray-provider-button-vertex
+      - job-pipe-pop:
+          requires:
+            - ray-provider-button-vertex
+      - Verify_Image5:
+          requires:
+            - job-pipe-pop
+      - resolveTLS:
+          requires:
+            - job-pipe-pop
+      - mega-migration:
+          requires:
+            - resolveTLS
+      - CORE-339:
+          requires:
+            - mega-migration
+      - MAT2:
+          requires:
+            - mega-migration
+      - blockPool:
+          requires:
+            - MAT2
+      - golf-4:
+          requires:
+            - blockPool
+      - ConvertTo-OffsetPixel:
+          requires:
+            - blockPool
+      - EagerDualCtxConverter:
+          requires:
+            - ConvertTo-OffsetPixel
+      - cf-old:
+          requires:
+            - EagerDualCtxConverter
+      - CCGMsaCQjB:
+          requires:
+            - EagerDualCtxConverter
+      - box-648:
+          requires:
+            - CCGMsaCQjB
+      - DATA-904:
+          requires:
+            - box-648
+      - inc_v3:
+          requires:
+            - box-648
+      - wbd7:
+          requires:
+            - inc_v3
+      - INIT_UAT:
+          requires:
+            - wbd7
+      - thunder-seek-setup-rect-poll:
+          requires:
+            - wbd7
+      - qsn:
+          requires:
+            - thunder-seek-setup-rect-poll
+      - CHECK_QA:
+          requires:
+            - qsn
+      - internal_publish:
+          requires:
+            - qsn
+      - complexFlag:
+          requires:
+            - internal_publish
+      - atlas-beta:
+          requires:
+            - complexFlag
+      - Stop-Light:
+          requires:
+            - complexFlag
+      - pbWidget:
+          requires:
+            - Stop-Light
+      - gating:
+          requires:
+            - pbWidget
+      - fin_rec
+      - locale_ga_BR
+      - do-the-thing:
+          requires:
+            - fin_rec
+            - locale_ga_BR
+      - rip-it:
+          requires:
+            - fin_rec
+            - locale_ga_BR
+      - succes-only-20:
+          requires:
+            - fin_rec
+            - locale_ga_BR
+      - TotalGlobalFastCheckout
+      - usp_ColumnFreeStore:
+          requires:
+            - TotalGlobalFastCheckout
+      - WEB-878:
+          requires:
+            - usp_ColumnFreeStore
+      - IND-EOF:
+          requires:
+            - usp_ColumnFreeStore
+      - Gamma_inv:
+          requires:
+            - IND-EOF
+      - ship-it:
+          requires:
+            - Gamma_inv
+      - Login:
+          requires:
+            - Gamma_inv
+      - addressKwhMax:
+          requires:
+            - Login
+      - chen-verify:
+          requires:
+            - addressKwhMax
+      - orbit-normal:
+          requires:
+            - addressKwhMax
+      - UNUSED_CNT:
+          requires:
+            - orbit-normal
+      - v1-nightly:
+          requires:
+            - UNUSED_CNT
+      - meshSkill:
+          requires:
+            - UNUSED_CNT
+      - WizardFx:
+          requires:
+            - meshSkill
+      - defualt-85:
+          requires:
+            - WizardFx
+      - out5:
+          requires:
+            - WizardFx
+      - lkp_SEMAPHORE_PIXEL:
+          requires:
+            - out5
+      - dotnet8-fmt:
+          requires:
+            - lkp_SEMAPHORE_PIXEL
+      - mount_fail_find:
+          requires:
+            - lkp_SEMAPHORE_PIXEL
+      - unmount___frame:
+          requires:
+            - mount_fail_find
+      - v8-edge5:
+          requires:
+            - unmount___frame
